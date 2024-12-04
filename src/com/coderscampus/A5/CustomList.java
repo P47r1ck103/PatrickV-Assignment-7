@@ -26,6 +26,9 @@ public interface CustomList<T> {
 	 *         <code>CustomList</code>
 	 */
 	int getSize();
+
+
+	boolean isEmpty();
 	
 	/**
 	 * This method will return the actual element from the <code>CustomList</code>

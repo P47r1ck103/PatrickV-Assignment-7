@@ -40,8 +40,16 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean addItem(T item) {
+		if (size == items.length) {
+			resize();
+		}
+		items[size++] = item;
+		return true;
+	}
 
-		return false;
+	@Override
+	public boolean isEmpty() {
+		return size == 0;
 	}
 
 }
