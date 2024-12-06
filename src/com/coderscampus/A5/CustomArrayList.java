@@ -7,16 +7,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(T item) {
 		if (size == items.length) {
-			Resize();
+			resize();
 		}
 		items[size++] = item;
 		return true;
-	}
-
-	private void Resize() {
-		Object[] newArray = new Object[items.length * 2];
-		System.arraycopy(items, 0, newArray, 0, items.length);
-		items = newArray;
 	}
 
 	@Override
