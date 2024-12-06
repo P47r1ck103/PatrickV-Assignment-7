@@ -37,19 +37,4 @@ public class CustomArrayList<T> implements CustomList<T> {
 		System.arraycopy(items, 0, newArray, 0, items.length);
 		items = newArray;
 	}
-
-	@Override
-	public boolean addItem(T item) {
-		if (size == items.length) {
-			resize();
-		}
-		items[size++] = item;
-		return true;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return size == 0;
-	}
-
 }

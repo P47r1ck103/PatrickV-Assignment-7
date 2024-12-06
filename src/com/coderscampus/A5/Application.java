@@ -1,6 +1,5 @@
 package com.coderscampus.A5;
 
-
 public class Application {
 
 	public static void main(String[] args) {
@@ -17,14 +16,13 @@ public class Application {
 		System.out.println(list.add("raspberry"));
 		System.out.println(list.add("pear"));
 		System.out.println(list.add("kiwi"));
-		
+
 		System.out.println("Size: " + list.getSize());
 		System.out.println("Item at index 1: " + list.get(1));
 
-		
 		try {
 			System.out.println(list.get(5));
-		}catch (IndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Exception caught: " + e.getMessage());
 		}
 		System.out.println("Is the list empty? " + list.isEmpty());

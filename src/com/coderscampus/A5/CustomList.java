@@ -1,11 +1,6 @@
 package com.coderscampus.A5;
 
 public interface CustomList<T> {
-	boolean add(T item);
-	
-
-	T get(int index);
-		
 	/**
 	 * This method should add a new item into the <code>CustomList</code> and should
 	 * return <code>true</code> if it was successfully able to insert an item.
@@ -16,7 +11,7 @@ public interface CustomList<T> {
 	 *         able to add an item to the list)
 	 *
 	 */
-	boolean addItem(T item);
+	boolean add(T item);
 
 	/**
 	 * This method should return the size of the <code>CustomList</code> based on
@@ -27,9 +22,6 @@ public interface CustomList<T> {
 	 */
 	int getSize();
 
-
-	boolean isEmpty();
-	
 	/**
 	 * This method will return the actual element from the <code>CustomList</code>
 	 * based on the index that is passed in.
@@ -39,5 +31,5 @@ public interface CustomList<T> {
 	 * @return The element that is stored inside of the <code>CustomList</code> at
 	 *         the given index
 	 */
-	
+	T get(int index);
 }
