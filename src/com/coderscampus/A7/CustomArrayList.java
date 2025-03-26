@@ -63,4 +63,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		size--;
 		return toRemove;
 	}
+	public int getLength() {
+		return items.length;
+	}
 }

@@ -1,8 +1,8 @@
 package com.coderscampus.A7;
 
-public class Application {
+public class Application extends CustomArrayList<String>{
 
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		CustomArrayList<String> list = new CustomArrayList<>();
 
 		System.out.println(list.add("Apple"));
