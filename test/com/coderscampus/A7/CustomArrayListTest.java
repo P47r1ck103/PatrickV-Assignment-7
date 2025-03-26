@@ -1,9 +1,7 @@
 package com.coderscampus.A7;
 
-
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -45,24 +43,62 @@ class CustomArrayListTest {
 		assertEquals(customList.getSize(), 9);
 		assertEquals(customList.get(3), 4);
 	}
+
 	@Test
 	void should_resize_array() {
 		CustomArrayList<Integer> customList = new CustomArrayList<>();
 		for (int i = 0; i < 11; i++) {
 			customList.add(i);
-		}		
-	
-	assertEquals(customList.getLength(), 20);
+		}
+
+		assertEquals(customList.getLength(), 20);
 	}
+
 	@Test
 	void should_get_from_index() {
 		CustomArrayList<Integer> customList = new CustomArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			customList.add(i);
-	}
-	assertEquals(customList.get(5), 5);
+		}
+		assertEquals(customList.get(5), 5);
 	}
 
+	@Test
+	void should_throw_index_out_of_bounds_exception_get() {
+		CustomArrayList<Integer> customList = new CustomArrayList<>();
+		assertThrows(IndexOutOfBoundsException.class, () -> customList.get(35));
+	}
+
+	@Test
+	void should_throw_index_out_of_bounds_exception_add() {
+		CustomArrayList<Integer> customList = new CustomArrayList<>();
+		assertThrows(IndexOutOfBoundsException.class, () -> customList.add(35, 35));
+	}
+
+	@Test
+	void should_resize_array_specific_index() {
+		CustomArrayList<Integer> customList = new CustomArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			customList.add(i);
+		}
+		customList.add(10, 10);
+		assertEquals(customList.getLength(), 20);
+	}
+
+	@Test
+	void should_throw_index_out_of_bounds_exception_remove() {
+		CustomArrayList<Integer> customList = new CustomArrayList<>();
+		assertThrows(IndexOutOfBoundsException.class, () -> customList.remove(35));
+	}
+
+	@Test
+	void should_move_values_down_after_add() {
+		CustomArrayList<Integer> customList = new CustomArrayList<>();
+		for (int i = 0; i < 5; i++) {
+			customList.add(i);
+		}
+		customList.add(3, 10);
+		assertEquals(3, customList.get(4));
+	}
 
 }
-		
