@@ -1,7 +1,7 @@
 package com.coderscampus.A7;
 
 public class CustomArrayList<T> implements CustomList<T> {
-	private T[] items = (T[]) new Object[10];
+	private Object[] items = new Object[10];
 	private int size = 0;
 
 	@Override
@@ -18,16 +18,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return size;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T get(int index) {
 		if (index >= 0 && index < size) {
-			return items[index];
+			return (T) items[index];
 		}
 		throw new IndexOutOfBoundsException("index " + index + " out of bounds.");
 	}
 
 	private void resize() {
-		T[] newArray = (T[]) new Object[items.length * 2];
+		Object[] newArray =  new Object[items.length * 2];
 		System.arraycopy(items, 0, newArray, 0, items.length);
 		items = newArray;
 	}
@@ -52,10 +53,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
 		System.out.println(index);
-		if (index < 0 || index > size) {
+		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException("Index out of bounds" + index + ".");
 		}
-		T toRemove = items[index];
+		@SuppressWarnings("unchecked")
+		T toRemove = (T) items[index];
 		for (int i = index; i < size - 1; i++){
 			items[i] = items[i + 1];
 		}
