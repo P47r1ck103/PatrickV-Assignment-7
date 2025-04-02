@@ -30,7 +30,7 @@ class CustomArrayListTest {
 		CustomArrayList<Integer> customList = new CustomArrayList<>();
 		customList.add(0, 10385);
 
-		assertEquals( 10385, customList.get(0));
+		assertEquals(10385, customList.get(0));
 	}
 
 	@Test
@@ -40,8 +40,8 @@ class CustomArrayListTest {
 			customList.add(i);
 		}
 		customList.remove(3);
-		assertEquals(9,customList.getSize());
-		assertEquals(4,customList.get(3));
+		assertEquals(9, customList.getSize());
+		assertEquals(4, customList.get(3));
 	}
 
 	@Test
@@ -51,7 +51,7 @@ class CustomArrayListTest {
 			customList.add(i);
 		}
 
-		assertEquals(20,customList.getLength());
+		assertEquals(11, customList.getSize());
 	}
 
 	@Test
@@ -60,7 +60,7 @@ class CustomArrayListTest {
 		for (int i = 0; i < 10; i++) {
 			customList.add(i);
 		}
-		assertEquals(5,customList.get(5));
+		assertEquals(5, customList.get(5));
 	}
 
 	@Test
@@ -84,7 +84,7 @@ class CustomArrayListTest {
 			customList.add(i);
 		}
 		customList.add(10, 10);
-		assertEquals(20,customList.getLength());
+		assertEquals(11, customList.getSize());
 	}
 
 	@Test
@@ -103,5 +103,5 @@ class CustomArrayListTest {
 		customList.add(3, 10);
 		assertEquals(3, customList.get(4));
 	}
-	
+
 }

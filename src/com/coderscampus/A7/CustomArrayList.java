@@ -6,10 +6,23 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(T item) {
+		return add(size, item);
+	}
+
+	@Override
+	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+		if (index < 0 || index > size) {
+			throw new IndexOutOfBoundsException("Index out of bounds " + index + ".");
+		}
 		if (size == items.length) {
 			resize();
 		}
-		items[size++] = item;
+		for (int i = size; i > index; i--) {
+			items[i] = items[i - 1];
+		}
+		items[index] = item;
+		size++;
+
 		return true;
 	}
 
@@ -27,45 +40,24 @@ public class CustomArrayList<T> implements CustomList<T> {
 		throw new IndexOutOfBoundsException("index " + index + " out of bounds.");
 	}
 
-	private void resize() {
-		Object[] newArray =  new Object[items.length * 2];
-		System.arraycopy(items, 0, newArray, 0, items.length);
-		items = newArray;
-	}
-
-	@Override
-	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		if (index < 0 || index > size) {
-			throw new IndexOutOfBoundsException("Index out of bounds" + index + ".");
-		}
-		if (size == items.length) {
-			resize();
-		}
-		for (int i = size; i > index; i--) {
-			items[i] = items[i - 1];
-		}
-		items[index] = item;
-		size++;
-
-		return true;
-	}
-
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		System.out.println(index);
 		if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index out of bounds" + index + ".");
+			throw new IndexOutOfBoundsException("Index out of bounds " + index + ".");
 		}
 		@SuppressWarnings("unchecked")
 		T toRemove = (T) items[index];
-		for (int i = index; i < size - 1; i++){
+		for (int i = index; i < size - 1; i++) {
 			items[i] = items[i + 1];
 		}
-		items[size-1] = null;
+		items[size - 1] = null;
 		size--;
 		return toRemove;
 	}
-	public int getLength() {
-		return items.length;
+
+	private void resize() {
+		Object[] newArray = new Object[items.length * 2];
+		System.arraycopy(items, 0, newArray, 0, items.length);
+		items = newArray;
 	}
 }
